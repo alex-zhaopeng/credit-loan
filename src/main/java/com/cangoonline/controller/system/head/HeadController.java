@@ -29,7 +29,7 @@ import com.cangoonline.util.mail.SimpleMailSender;
 
 /** 
  * 类名称：HeadController
- * 创建人：FH 313596790Q
+ * 创建人：web
  * 修改时间：2015年11月23日
  * @version
  */
@@ -389,9 +389,10 @@ public class HeadController extends BaseController {
 		}
 		if(null != strLOGINEDIT && !"".equals(strLOGINEDIT)){
 			String strLo[] = strLOGINEDIT.split(",fh,");
-			if(strLo.length == 2){
+			if(strLo.length == 3){
 				pd.put("isZhuce", strLo[0]);
 				pd.put("isMusic", strLo[1]);
+				pd.put("isVcode", strLo[2]);
 			}
 		}
 		mv.setViewName("system/head/sys_edit");
@@ -411,9 +412,9 @@ public class HeadController extends BaseController {
 		pd = this.getPageData();
 		Tools.writeFile(Const.SYSNAME,pd.getString("YSYNAME"));	//写入系统名称
 		Tools.writeFile(Const.PAGE,pd.getString("COUNTPAGE"));	//写入每页条数
-		Tools.writeFile(Const.EMAIL,pd.getString("SMTP")+",cangoonline,"+pd.getString("PORT")+",cangoonline,"+pd.getString("EMAIL")+",cangoonline,"+pd.getString("PAW"));	//写入邮件服务器配置
-		Tools.writeFile(Const.SMS1,pd.getString("SMSU1")+",cangoonline,"+pd.getString("SMSPAW1"));	//写入短信1配置
-		Tools.writeFile(Const.SMS2,pd.getString("SMSU2")+",cangoonline,"+pd.getString("SMSPAW2"));	//写入短信2配置
+		Tools.writeFile(Const.EMAIL,pd.getString("SMTP")+",fh,"+pd.getString("PORT")+",fh,"+pd.getString("EMAIL")+",fh,"+pd.getString("PAW"));	//写入邮件服务器配置
+		Tools.writeFile(Const.SMS1,pd.getString("SMSU1")+",fh,"+pd.getString("SMSPAW1"));	//写入短信1配置
+		Tools.writeFile(Const.SMS2,pd.getString("SMSU2")+",fh,"+pd.getString("SMSPAW2"));	//写入短信2配置
 		mv.addObject("msg","OK");
 		mv.setViewName("save_result");
 		return mv;
@@ -429,8 +430,8 @@ public class HeadController extends BaseController {
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
-		Tools.writeFile(Const.FWATERM,pd.getString("isCheck1")+",cangoonline,"+pd.getString("fcontent")+",cangoonline,"+pd.getString("fontSize")+",cangoonline,"+pd.getString("fontX")+",cangoonline,"+pd.getString("fontY"));	//文字水印配置
-		Tools.writeFile(Const.IWATERM,pd.getString("isCheck2")+",cangoonline,"+pd.getString("imgUrl")+",cangoonline,"+pd.getString("imgX")+",cangoonline,"+pd.getString("imgY"));	//图片水印配置
+		Tools.writeFile(Const.FWATERM,pd.getString("isCheck1")+",fh,"+pd.getString("fcontent")+",fh,"+pd.getString("fontSize")+",fh,"+pd.getString("fontX")+",fh,"+pd.getString("fontY"));	//文字水印配置
+		Tools.writeFile(Const.IWATERM,pd.getString("isCheck2")+",fh,"+pd.getString("imgUrl")+",fh,"+pd.getString("imgX")+",fh,"+pd.getString("imgY"));	//图片水印配置
 		Watermark.fushValue();
 		mv.addObject("msg","OK");
 		mv.setViewName("save_result");
@@ -447,9 +448,9 @@ public class HeadController extends BaseController {
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
-		String winStr = pd.getString("WIMIP")+",cangoonline,"+pd.getString("WIMPORT")+",cangoonline,";								//即时通讯配置
-		String olStr = pd.getString("OLIP")+",cangoonline,"+pd.getString("OLPORT")+",cangoonline,"+pd.getString("FHsmsSound")+",cangoonline,";	//站内信配置
-		String videoStr = pd.getString("VIDEOIP")+",cangoonline,"+pd.getString("VIDEOPORT");									//视频弹幕配置
+		String winStr = pd.getString("WIMIP")+",fh,"+pd.getString("WIMPORT")+",fh,";								//即时通讯配置
+		String olStr = pd.getString("OLIP")+",fh,"+pd.getString("OLPORT")+",fh,"+pd.getString("FHsmsSound")+",fh,";	//站内信配置
+		String videoStr = pd.getString("VIDEOIP")+",fh,"+pd.getString("VIDEOPORT");									//视频弹幕配置
 		Tools.writeFile(Const.WEBSOCKET,winStr+olStr+videoStr);	//websocket配置
 		mv.addObject("msg","OK");
 		mv.setViewName("save_result");
@@ -467,7 +468,7 @@ public class HeadController extends BaseController {
 		PageData pd = new PageData();
 		pd = this.getPageData();
 		Tools.writeFile(Const.WEIXIN,pd.getString("Token"));	//写入微信配置
-		Tools.writeFile(Const.LOGINEDIT,pd.getString("isZhuce")+",cangoonline,"+pd.getString("isMusic"));	//登录页面配置
+		Tools.writeFile(Const.LOGINEDIT,pd.getString("isZhuce")+",fh,"+pd.getString("isMusic")+",fh,"+pd.getString("isVcode"));	//登录页面配置
 		mv.addObject("msg","OK");
 		mv.setViewName("save_result");
 		return mv;
