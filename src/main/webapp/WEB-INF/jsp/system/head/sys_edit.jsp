@@ -327,6 +327,13 @@ var jsessionid = "<%=session.getId()%>";  //勿删，uploadify兼容火狐用到
 														<span class="lbl"></span>
 													</label>
 												</td>
+												<td style="width:88px;text-align: right;padding-top: 13px;">验证码：</td>
+												<td>
+													<label style="float:left;padding-left: 5px;padding-top:7px;">
+														<input name="login-field-1" onclick="openVc();" class="ace ace-switch ace-switch-3" type="checkbox" <c:if test="${pd.isVcode == 'yes' }">checked="checked"</c:if> >
+														<span class="lbl"></span>
+													</label>
+												</td>
 											</tr>
 											<tr>
 												<td style="width:56px;text-align: right;padding-top: 12px;">音乐文件:</td>
@@ -346,6 +353,7 @@ var jsessionid = "<%=session.getId()%>";  //勿删，uploadify兼容火狐用到
 										</table>
 										<input type="hidden" name="isZhuce" id="isZhuce" value="${pd.isZhuce }"/>
 										<input type="hidden" name="isMusic" id="isMusic" value="${pd.isMusic }"/>
+                                        <input type="hidden" name="isVcode" id="isVcode" value="${pd.isVcode }"/>
 										<input type="hidden" value="no" id="hasTp4" />
 										</form>
 									  </div>

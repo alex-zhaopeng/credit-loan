@@ -76,6 +76,16 @@ function openMu(){
 	}
 }
 
+//是否使用验证码
+function openVc(){
+	if("no" == $("#isVcode").val()){
+		$("#isVcode").val('yes');
+	}else{
+		$("#isVcode").val('no');
+	}
+}
+
+
 //=======================================配置NO3
 function save3(){
 
